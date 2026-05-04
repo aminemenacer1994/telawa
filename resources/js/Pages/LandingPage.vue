@@ -8,17 +8,19 @@
     <nav class="navbar">
       <div class="container">
         <div class="nav-content">
-          <div class="logo">
-            <span class="logo-icon">ﷺ</span>
-            <span class="logo-text">Telawa</span>
-            <span class="logo-dot">⦿</span>
+          <div class="logo" >
+            <img src="/images/logo1.png" width="300" alt="Telawa">
           </div>
-          <div class="nav-links">
+          
+        </div><div class="nav-links">
+            <a href="#about" class="nav-link">Our Mission</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#about" class="nav-link">Our Mission</a>
+            <a href="#features" class="nav-link">Features</a>
             <a href="#about" class="nav-link">Our Mission</a>
             <a href="#features" class="nav-link">Features</a>
           </div>
           <button @click="startJourney" class="btn btn-primary">🌙 Start Free</button>
-        </div>
       </div>
     </nav>
 
@@ -27,10 +29,6 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-left">
-            <div class="hero-badge">
-              <span class="badge-dot"></span>
-              <span> 🤲 بِسْمِ اللَّهِ 🤲 </span>
-            </div>
             <h1 class="hero-title">
               Memorise the Qur’ān.<br>
               <span class="warm-accent">Keep it forever.</span>
@@ -140,7 +138,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <span>Telawa • نور على نور</span>
+          <span>Telawa </span>
           <span class="footer-animation">۞</span>
           <span>made with رحمة for huffādh</span>
         </div>
@@ -236,7 +234,6 @@ export default {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
   position: relative;
   z-index: 2;
 }
@@ -257,7 +254,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 0;
 }
 
 .logo {
