@@ -4,15 +4,18 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
+import QuranGlobalAudioPlayer from '@/Components/Quran/QuranGlobalAudioPlayer.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import { useQuranThemeStore } from '@/quran/stores/quranThemeStore';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+useQuranThemeStore().initialize();
 </script>
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen quran-theme-surface">
             <nav
                 class="border-b border-gray-100 bg-white"
             >
@@ -190,9 +193,11 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="quran-main-content">
                 <slot />
             </main>
+
+            <QuranGlobalAudioPlayer />
         </div>
     </div>
 </template>

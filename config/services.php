@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'quran' => [
+        'base_url' => env('QURAN_API_BASE_URL', 'https://api.quran.com/api/v4'),
+        'token' => env('QURAN_API_TOKEN'),
+        'client_id' => env('QURAN_API_CLIENT_ID'),
+    ],
+
 ];
