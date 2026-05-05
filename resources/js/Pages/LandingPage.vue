@@ -9,7 +9,7 @@
       <div class="container">
         <div class="nav-content">
           <div class="logo" >
-            <img src="/images/logo1.png" width="300" alt="Telawa">
+            <img src="/images/logo4.png" width="320" alt="Telawa">
           </div>
           
         </div><div class="nav-links">
