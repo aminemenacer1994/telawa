@@ -7,7 +7,7 @@
     <nav class="navbar">
       <div class="container nav-container">
         <div class="logo">
-          <img src="/images/logo4.png" width="250" alt="Telawa">
+          <img src="/images/logo.png" width="290" alt="mutqin logo">
         </div>
 
         <div class="nav-links-desktop">
@@ -84,15 +84,15 @@
               </div>
               <div class="revision-info">
                 <div class="revision-item">
-                  <span class="revision-label">⚠️ Weak verses detected</span>
+                  <span class="revision-label">⚠️ Weak verses detected  </span>
                   <span class="revision-value">4 need attention</span>
                 </div>
                 <div class="revision-item">
-                  <span class="revision-label">📖 Today's revision</span>
+                  <span class="revision-label">📖 Today's revision  </span>
                   <span class="revision-value">12 verses</span>
                 </div>
                 <div class="revision-item">
-                  <span class="revision-label">🔥 Current streak</span>
+                  <span class="revision-label">🔥 Current streak  </span>
                   <span class="revision-value">37 days</span>
                 </div>
               </div>
@@ -114,19 +114,19 @@
         <div class="testimonials-grid">
           <div class="testimonial-card">
             <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">After 8 years of Hifz, I was forgetting faster than I could revise. Telawa
+            <p class="testimonial-text">After 8 years of Hifz, I was forgetting faster than I could revise. mutqin
               changed that. My retention went from 60% to 89% in 4 months. Alhamdulillah.</p>
             <div class="testimonial-author">— Abu Abdullah, Hafiz & Teacher</div>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">As a working mother of three, I barely had time to revise. Telawa's 15-minute
+            <p class="testimonial-text">As a working mother of three, I barely had time to revise. mutqin's 15-minute
               sessions fit perfectly into my day. I've finally stopped forgetting what I memorised years ago.</p>
             <div class="testimonial-author">— Fatima, Mother & Hafiza</div>
           </div>
           <div class="testimonial-card">
             <div class="testimonial-quote">"</div>
-            <p class="testimonial-text">I started my Hifz journey at university. Other apps overwhelmed me. Telawa's
+            <p class="testimonial-text">I started my Hifz journey at university. Other apps overwhelmed me. mutqin's
               gentle approach gave me confidence. I've now completed 5 juz and remember them all.</p>
             <div class="testimonial-author">— Aisha, University Student</div>
           </div>
@@ -139,7 +139,7 @@
       <div class="container">
         <div class="difference-header">
           <div class="section-label">🧐 Here's what makes us different</div>
-          <h2 class="section-title">Other apps & websites VS Telawa</h2>
+          <h2 class="section-title">Other apps & websites VS mutqin</h2>
         </div>
         <div class="difference-grid">
           <div class="other-card">
@@ -153,8 +153,8 @@
             </ul>
           </div>
           <div class="vs-divider">VS</div>
-          <div class="telawa-card">
-            <h3>✨ Telawa</h3>
+          <div class="mutqin-card">
+            <h3>✨ mutqin</h3>
             <ul>
               <li>🧠 Focus on what you KEEP forever</li>
               <li>🕌 No gamification just sincere progress</li>
@@ -171,7 +171,7 @@
     <section id="how-it-works" class="how-it-works">
       <div class="container">
         <div class="section-header text-center">
-          <div class="section-label">⚙️ The Telawa method</div>
+          <div class="section-label">⚙️ The mutqin method</div>
           <h2 class="section-title">Three steps. Zero forgetfulness. Insha'Allah.</h2>
           <p class="section-subtitle">No fluff. No gimmicks. Just a system that actually works.</p>
         </div>
@@ -203,11 +203,11 @@
       </div>
     </section>
 
-    <!-- WHY TELAWA – Pain points -->
+    <!-- WHY mutqin – Pain points -->
     <section id="why-us" class="why-us">
       <div class="container">
         <div class="section-header text-center">
-          <div class="section-label">🤔 Why Telawa?</div>
+          <div class="section-label">🤔 Why mutqin?</div>
           <h2 class="section-title">Because forgetting the Qur'an hurts.</h2>
           <p class="section-subtitle">We've been there. Here's how we solve what others ignore.</p>
         </div>
@@ -393,9 +393,9 @@
           <div class="contact-left">
             <div class="contact-emoji">📬</div>
             <h3>We'd love to hear from you</h3>
-            <p>Whether you have a question about Telawa, need help with your Hifz journey, or just want to share your
+            <p>Whether you have a question about mutqin, need help with your Hifz journey, or just want to share your
               story our team is here for you.</p>
-            <div class="contact-detail">✉️ support@telawa.com</div>
+            <div class="contact-detail">✉️ support@mutqin.com</div>
             <div class="contact-detail">⏱️ Response within 24 hours</div>
             <div class="contact-dua">“And when My servants ask you concerning Me indeed I am near.” Qur'an 2:186
             </div>
@@ -415,7 +415,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <div class="footer-logo">Telawa نور على نور</div>
+            <div class="footer-logo">mutqin نور على نور</div>
             <p class="footer-tagline">Preserving the Qur'an in hearts, one ayah at a time.</p>
           </div>
           <div class="footer-links-group">
@@ -433,11 +433,11 @@
           </div>
           <div class="footer-links-group">
             <h4>Connect</h4>
-            <a href="#">support@telawa.com</a>
+            <a href="#">support@mutqin.com</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Telawa. Made with رحمة for the Ummah.</p>
+          <p>© 2025 mutqin. Made with رحمة for the Ummah.</p>
         </div>
       </div>
     </footer>
@@ -454,12 +454,12 @@ export default {
       openFaq: null,
       faqs: [
         {
-          question: "I forget verses I memorised years ago. Can Telawa really help?",
+          question: "I forget verses I memorised years ago. Can mutqin really help?",
           answer: "Yes and that's exactly what we built this for. Our system identifies weak verses based on your recall patterns and schedules revision to rebuild those foundations. Many users have recovered 'lost' juz within weeks."
         },
         {
           question: "How is this different from Anki or other flashcard apps?",
-          answer: "Anki is generic spaced repetition. Telawa is built specifically for Qur'an memorisation with features like ayah-level tracking, proper Arabic script, tajweed markers, and revision schedules designed by huffadh, not generalists."
+          answer: "Anki is generic spaced repetition. mutqin is built specifically for Qur'an memorisation with features like ayah-level tracking, proper Arabic script, tajweed markers, and revision schedules designed by huffadh, not generalists."
         },
         {
           question: "I only have 10 minutes a day. Is that enough?",
@@ -471,7 +471,7 @@ export default {
         },
         {
           question: "Do I need to be tech-savvy to use this?",
-          answer: "Not at all. The interface is clean and simple. If you can send an email, you can use Telawa. We've tested it with users aged 12 to 75."
+          answer: "Not at all. The interface is clean and simple. If you can send an email, you can use mutqin. We've tested it with users aged 12 to 75."
         }
       ]
     }
@@ -512,7 +512,7 @@ export default {
       alert("🎯 Start your 14-day free trial. No credit card required. Let's fix your retention together.");
     },
     showDemo() {
-      alert("👀 Watch how Telawa finds your weak spots before you forget them. Request a demo: support@telawa.com");
+      alert("👀 Watch how mutqin finds your weak spots before you forget them. Request a demo: support@mutqin.com");
     },
     startMonthly() {
       alert("Monthly plan: $9.99/month (≈ £7.99) • 14-day free trial • Cancel anytime");
@@ -952,7 +952,7 @@ export default {
 }
 
 .other-card,
-.telawa-card {
+.mutqin-card {
   flex: 1;
   min-width: 280px;
   background: white;
@@ -962,18 +962,18 @@ export default {
 }
 
 .other-card h3,
-.telawa-card h3 {
+.mutqin-card h3 {
   font-size: 1.3rem;
   margin-bottom: 20px;
 }
 
 .other-card ul,
-.telawa-card ul {
+.mutqin-card ul {
   list-style: none;
 }
 
 .other-card li,
-.telawa-card li {
+.mutqin-card li {
   padding: 10px 0;
   font-size: 0.9rem;
   border-bottom: 1px solid #EFEAE2;
@@ -986,7 +986,7 @@ export default {
   align-self: center;
 }
 
-.telawa-card {
+.mutqin-card {
   border: 2px solid #A0784C;
 }
 
