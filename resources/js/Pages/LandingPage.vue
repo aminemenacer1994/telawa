@@ -3,7 +3,7 @@
 
     <div class="bg-pattern"></div>
 
-    <!-- NAVBAR – Compact -->
+    <!-- NAVBAR – Compact, includes Contact -->
     <nav class="navbar">
       <div class="container nav-container">
         <div class="logo">
@@ -15,6 +15,7 @@
           <a href="#why-us" class="nav-link">Why us</a>
           <a href="#pricing" class="nav-link">Pricing</a>
           <a href="#faq" class="nav-link">FAQ</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </div>
 
         <button class="btn btn-primary desktop-cta" @click="startJourney">Start free trial →</button>
@@ -29,6 +30,7 @@
         <a href="#why-us" class="nav-link" @click="closeMobileMenu">Why us</a>
         <a href="#pricing" class="nav-link" @click="closeMobileMenu">Pricing</a>
         <a href="#faq" class="nav-link" @click="closeMobileMenu">FAQ</a>
+        <a href="#contact" class="nav-link" @click="closeMobileMenu">Contact</a>
         <button class="btn btn-primary mobile-cta" @click="startJourney">Start free trial →</button>
       </div>
     </nav>
@@ -102,16 +104,46 @@
       <div class="scroll-prompt">↓ Keep scrolling this gets real ↓</div>
     </section>
 
-    <!-- WHAT MAKES US DIFFERENT – Shown immediately after hero -->
+    <!-- SOCIAL PROOF – 3 testimonials (Hafiz, Parent, Female Student) -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label">💬 Real huffadh. Real results.</div>
+          <h2 class="section-title">What our community is saying</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">After 8 years of Hifz, I was forgetting faster than I could revise. Telawa
+              changed that. My retention went from 60% to 89% in 4 months. Alhamdulillah.</p>
+            <div class="testimonial-author">— Abu Abdullah, Hafiz & Teacher</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">As a working mother of three, I barely had time to revise. Telawa's 15-minute
+              sessions fit perfectly into my day. I've finally stopped forgetting what I memorised years ago.</p>
+            <div class="testimonial-author">— Fatima, Mother & Hafiza</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">I started my Hifz journey at university. Other apps overwhelmed me. Telawa's
+              gentle approach gave me confidence. I've now completed 5 juz and remember them all.</p>
+            <div class="testimonial-author">— Aisha, University Student</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT MAKES US DIFFERENT -->
     <section class="difference-section">
       <div class="container">
         <div class="difference-header">
           <div class="section-label">🧐 Here's what makes us different</div>
-          <h2 class="section-title">Other apps vs. Telawa</h2>
+          <h2 class="section-title">Other apps & websites VS Telawa</h2>
         </div>
         <div class="difference-grid">
           <div class="other-card">
-            <h3>📱 Other apps</h3>
+            <h3>📱 Other apps & websites</h3>
             <ul>
               <li>❤️ Focus on how FAST you memorise</li>
               <li>🎮 Gamify the Qur'an with badges</li>
@@ -135,7 +167,7 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS – Direct, quirky, Islamic -->
+    <!-- HOW IT WORKS -->
     <section id="how-it-works" class="how-it-works">
       <div class="container">
         <div class="section-header text-center">
@@ -171,7 +203,7 @@
       </div>
     </section>
 
-    <!-- WHY TELAWA – Pain point focused, solution oriented -->
+    <!-- WHY TELAWA – Pain points -->
     <section id="why-us" class="why-us">
       <div class="container">
         <div class="section-header text-center">
@@ -216,7 +248,7 @@
       </div>
     </section>
 
-    <!-- WHAT'S AVAILABLE – Features at a glance -->
+    <!-- WHAT'S AVAILABLE -->
     <section class="whats-available">
       <div class="container">
         <div class="section-header text-center">
@@ -270,7 +302,7 @@
       </div>
     </section>
 
-    <!-- PRICING SECTION -->
+    <!-- PRICING SECTION – With international note -->
     <section id="pricing" class="pricing-section">
       <div class="container">
         <div class="section-header text-center">
@@ -281,7 +313,8 @@
         <div class="pricing-grid">
           <div class="pricing-card">
             <div class="plan-name">Monthly</div>
-            <div class="plan-price">$9.99 <span>/ month</span></div>
+            <div class="plan-price">£9.99 <span>/ month</span></div>
+            <div class="plan-price-gbp">£7.99 / month</div>
             <ul class="plan-features">
               <li>Full retention engine</li>
               <li>Unlimited verses & surahs</li>
@@ -294,7 +327,8 @@
           <div class="pricing-card featured">
             <div class="popular-badge">✨ Best value ✨</div>
             <div class="plan-name">Annual</div>
-            <div class="plan-price">$79.99 <span>/ year</span></div>
+            <div class="plan-price">£79.99 <span>/ year</span></div>
+            <div class="plan-price-gbp">£63.99 / year</div>
             <div class="plan-savings">Save 33% • 2 months free</div>
             <ul class="plan-features">
               <li>Everything in Monthly</li>
@@ -307,7 +341,8 @@
           </div>
           <div class="pricing-card">
             <div class="plan-name">Lifetime</div>
-            <div class="plan-price">$249 <span>one time</span></div>
+            <div class="plan-price">£249 <span>one time</span></div>
+            <div class="plan-price-gbp">£199 one time</div>
             <ul class="plan-features">
               <li>Everything in Annual</li>
               <li>Lifetime updates</li>
@@ -318,10 +353,11 @@
             <button @click="startLifetime" class="btn btn-outline full-width">Start free trial →</button>
           </div>
         </div>
+        <div class="pricing-note">💳 All prices in GBP. Exact conversion at checkout.</div>
       </div>
     </section>
 
-    <!-- FAQ – Real questions, real answers -->
+    <!-- FAQ -->
     <section id="faq" class="faq-section">
       <div class="container">
         <div class="section-header text-center">
@@ -344,27 +380,30 @@
           </div>
         </div>
         <div class="faq-footer">
-          <p>Still have questions? <a href="#" @click.prevent="openContact">Email our team directly →</a> We respond
+          <p>Still have questions? <a href="#" @click.prevent="openContact">Reach out to our team →</a> We respond
             within 24 hours, insha'Allah.</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT – Simple, direct -->
+    <!-- CONTACT – Spiritual, warm tone -->
     <section id="contact" class="contact-section">
       <div class="container">
         <div class="contact-card">
           <div class="contact-left">
             <div class="contact-emoji">📬</div>
-            <h3>Want to talk to a human?</h3>
-            <p>We're real people who actually care about your Hifz. Send us a message we reply fast.</p>
+            <h3>We'd love to hear from you</h3>
+            <p>Whether you have a question about Telawa, need help with your Hifz journey, or just want to share your
+              story our team is here for you.</p>
             <div class="contact-detail">✉️ support@telawa.com</div>
             <div class="contact-detail">⏱️ Response within 24 hours</div>
+            <div class="contact-dua">“And when My servants ask you concerning Me indeed I am near.” Qur'an 2:186
+            </div>
           </div>
           <form class="contact-right" @submit.prevent="submitContact">
             <input type="text" placeholder="Your name" class="form-input" required>
             <input type="email" placeholder="Email address" class="form-input" required>
-            <textarea placeholder="Tell us what's on your mind..." rows="3" class="form-textarea" required></textarea>
+            <textarea placeholder="How can we help?" rows="3" class="form-textarea" required></textarea>
             <button type="submit" class="btn btn-primary">Send message ✉️</button>
           </form>
         </div>
@@ -387,9 +426,10 @@
             <a href="#faq">FAQ</a>
           </div>
           <div class="footer-links-group">
-            <h4>Legal</h4>
+            <h4>Support</h4>
+            <a href="#contact">Contact</a>
+            <a href="#">Help center</a>
             <a href="#">Privacy policy</a>
-            <a href="#">Terms of service</a>
           </div>
           <div class="footer-links-group">
             <h4>Connect</h4>
@@ -441,7 +481,6 @@ export default {
       this.animatedWidth = 92;
     }, 300);
 
-    // Scroll animation observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -476,13 +515,13 @@ export default {
       alert("👀 Watch how Telawa finds your weak spots before you forget them. Request a demo: support@telawa.com");
     },
     startMonthly() {
-      alert("Monthly plan: $9.99/month • 14-day free trial • Cancel anytime");
+      alert("Monthly plan: $9.99/month (≈ £7.99) • 14-day free trial • Cancel anytime");
     },
     startAnnual() {
-      alert("Annual plan: $79.99/year • Save 33% • 14-day free trial • Family sharing included");
+      alert("Annual plan: $79.99/year (≈ £63.99) • Save 33% • 14-day free trial • Family sharing included");
     },
     startLifetime() {
-      alert("Lifetime plan: $249 one-time • 14-day free trial • Never pay again");
+      alert("Lifetime plan: $249 one-time (≈ £199) • 14-day free trial • Never pay again");
     },
     submitContact() {
       alert("Thank you for reaching out. We'll respond within 24 hours, insha'Allah.");
@@ -494,7 +533,7 @@ export default {
 <style scoped>
 /* ============================================
    UNIQUE ISLAMIC LANDING PAGE
-   Direct • Pain-point focused • Professional with personality
+   Professional • Spiritual • Pain-point focused
 ============================================ */
 
 * {
@@ -854,10 +893,49 @@ export default {
   color: #A8B5AA;
 }
 
+/* ========== TESTIMONIALS ========== */
+.testimonials-section {
+  padding: 60px 0;
+  background: #FAF8F4;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid #EFEAE2;
+}
+
+.testimonial-quote {
+  font-size: 2rem;
+  color: #A0784C;
+  font-family: Georgia, serif;
+  margin-bottom: 12px;
+}
+
+.testimonial-text {
+  font-size: 0.85rem;
+  color: #3D524A;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  font-size: 0.75rem;
+  color: #8A9C93;
+}
+
 /* ========== DIFFERENCE SECTION ========== */
 .difference-section {
   padding: 60px 0;
-  background: #FAF8F4;
 }
 
 .difference-header {
@@ -915,6 +993,7 @@ export default {
 /* ========== HOW IT WORKS ========== */
 .how-it-works {
   padding: 70px 0;
+  background: #FAF8F4;
 }
 
 .steps-grid {
@@ -993,10 +1072,9 @@ export default {
   color: #8A9C93;
 }
 
-/* ========== WHY US - PAIN POINTS ========== */
+/* ========== WHY US ========== */
 .why-us {
   padding: 70px 0;
-  background: #FAF8F4;
 }
 
 .pain-points-grid {
@@ -1011,6 +1089,7 @@ export default {
   padding: 24px;
   border-radius: 20px;
   border-left: 4px solid #A0784C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .pain-emoji {
@@ -1066,6 +1145,7 @@ export default {
 /* ========== WHAT'S AVAILABLE ========== */
 .whats-available {
   padding: 70px 0;
+  background: #FAF8F4;
 }
 
 .features-showcase {
@@ -1107,7 +1187,6 @@ export default {
 /* ========== PRICING ========== */
 .pricing-section {
   padding: 70px 0;
-  background: #FAF8F4;
 }
 
 .pricing-grid {
@@ -1160,6 +1239,12 @@ export default {
   color: #8A9C93;
 }
 
+.plan-price-gbp {
+  font-size: 0.7rem;
+  color: #A0784C;
+  margin-bottom: 12px;
+}
+
 .plan-savings {
   font-size: 0.7rem;
   color: #A0784C;
@@ -1185,9 +1270,17 @@ export default {
   color: #A0784C;
 }
 
+.pricing-note {
+  text-align: center;
+  font-size: 0.7rem;
+  color: #8A9C93;
+  margin-top: 32px;
+}
+
 /* ========== FAQ ========== */
 .faq-section {
   padding: 70px 0;
+  background: #FAF8F4;
 }
 
 .faq-grid {
@@ -1253,7 +1346,6 @@ export default {
 /* ========== CONTACT ========== */
 .contact-section {
   padding: 70px 0;
-  background: #FAF8F4;
 }
 
 .contact-card {
@@ -1264,6 +1356,7 @@ export default {
   border-radius: 32px;
   padding: 48px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #EFEAE2;
 }
 
 .contact-emoji {
@@ -1274,17 +1367,28 @@ export default {
 .contact-left h3 {
   font-size: 1.3rem;
   margin-bottom: 12px;
+  color: #1E2F2A;
 }
 
 .contact-left p {
   color: #5A6B63;
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .contact-detail {
   margin: 12px 0;
   font-size: 0.9rem;
   color: #1E2F2A;
+}
+
+.contact-dua {
+  margin-top: 20px;
+  font-size: 0.75rem;
+  color: #A0784C;
+  font-style: italic;
+  padding-top: 16px;
+  border-top: 1px solid #EFEAE2;
 }
 
 .contact-right {
@@ -1379,7 +1483,8 @@ export default {
 
   .hero-grid,
   .difference-grid,
-  .pricing-grid {
+  .pricing-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1409,6 +1514,10 @@ export default {
   .vs-divider {
     display: none;
   }
+
+  .testimonials-grid {
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1432,6 +1541,10 @@ export default {
   .footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 }
 
