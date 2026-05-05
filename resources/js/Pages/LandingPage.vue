@@ -1,146 +1,403 @@
 <template>
   <div class="landing-page">
 
-    <!-- Islamic subtle pattern overlay -->
     <div class="bg-pattern"></div>
 
-    <!-- NAVBAR – warm, glassy, with soft entrance -->
+    <!-- NAVBAR – Compact -->
     <nav class="navbar">
-      <div class="container">
-        <div class="nav-content">
-          <div class="logo" >
-            <img src="/images/logo4.png" width="320" alt="Telawa">
-          </div>
-          
-        </div><div class="nav-links">
-            <a href="#about" class="nav-link">Our Mission</a>
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#about" class="nav-link">Our Mission</a>
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#about" class="nav-link">Our Mission</a>
-            <a href="#features" class="nav-link">Features</a>
-          </div>
-          <button @click="startJourney" class="btn btn-primary">🌙 Start Free</button>
+      <div class="container nav-container">
+        <div class="logo">
+          <img src="/images/logo4.png" width="250" alt="Telawa">
+        </div>
+
+        <div class="nav-links-desktop">
+          <a href="#how-it-works" class="nav-link">How it works</a>
+          <a href="#why-us" class="nav-link">Why us</a>
+          <a href="#pricing" class="nav-link">Pricing</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+
+        <button class="btn btn-primary desktop-cta" @click="startJourney">Start free trial →</button>
+
+        <button class="mobile-menu-btn" @click="toggleMobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="nav-links-mobile" :class="{ 'active': mobileMenuOpen }">
+        <a href="#how-it-works" class="nav-link" @click="closeMobileMenu">How it works</a>
+        <a href="#why-us" class="nav-link" @click="closeMobileMenu">Why us</a>
+        <a href="#pricing" class="nav-link" @click="closeMobileMenu">Pricing</a>
+        <a href="#faq" class="nav-link" @click="closeMobileMenu">FAQ</a>
+        <button class="btn btn-primary mobile-cta" @click="startJourney">Start free trial →</button>
       </div>
     </nav>
 
-    <!-- HERO – with floating subtle animation & Islamic geometry vibe -->
+    <!-- HERO – Pain point focused -->
     <section class="hero-section">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-left">
+            <div class="hero-badge">
+              <span class="badge-dot"></span>
+              <span>🤲 بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ 🤲</span>
+            </div>
             <h1 class="hero-title">
-              Memorise the Qur’ān.<br>
-              <span class="warm-accent">Keep it forever.</span>
+              You memorised. <span class="highlight">Then you forgot.</span>
             </h1>
             <p class="hero-description">
-              Most apps help you memorise.<br>
-              <strong>Telawa ensures you never lose it.</strong>
+              We get it. You spent months maybe years memorising the Qur'an. Then life happened. Work. Kids. Exams.
+              And slowly, those āyāt started slipping away.
             </p>
-            <div class="hero-benefits">
-              <div v-for="(benefit, i) in benefits" :key="i" class="benefit-item">
-                <span class="check">𓂀</span> {{ benefit }}
-              </div>
+            <div class="pain-solution">
+              <div class="pain">😔 The problem: No structured revision.</div>
+              <div class="solution">✨ Our solution: A retention system that finds your weak spots before you forget
+                them.</div>
             </div>
             <div class="hero-actions">
-              <button @click="startJourney" class="btn btn-primary btn-lg">🌸 Begin Your Journey</button>
-              <button @click="showDemo" class="btn btn-outline btn-lg">🎥 Watch Demo</button>
+              <button @click="startJourney" class="btn btn-primary btn-lg">🎯 Fix my retention →</button>
+              <button @click="showDemo" class="btn btn-outline btn-lg">👀 See how it works</button>
             </div>
+            <p class="no-credit">14-day free trial • No credit card • Cancel anytime</p>
           </div>
 
-          <!-- dashboard – warm & cozy with subtle shine -->
           <div class="hero-right">
             <div class="dashboard-card">
               <div class="card-header">
-                <div class="day-badge">🌸 Day <span class="fw-bold">127</span></div>
-                <div class="salah-icon">🕌</div>
+                <div class="day-badge">📅 Day 127</div>
+                <div class="retention-badge">📊 92% retained</div>
               </div>
-              <div class="progress-main">
-                <div class="surah-name">Sūrat Al-Baqarah</div>
+              <div class="surah-info">
+                <span class="surah-name">Surah Al-Baqarah</span>
+                <span class="ayah-range">Verses 1–286</span>
+              </div>
+              <div class="progress-section">
+                <div class="progress-label">
+                  <span>🧠 Retention strength</span>
+                  <strong>92%</strong>
+                </div>
                 <div class="progress-bar">
                   <div class="progress-fill" :style="{ width: animatedWidth + '%' }"></div>
                 </div>
-                <div class="progress-text">
-                  <span>{{ animatedWidth }}% Strong</span>
-                  <strong>✨ 4 āyāt need love ✨</strong>
+              </div>
+              <div class="revision-info">
+                <div class="revision-item">
+                  <span class="revision-label">⚠️ Weak verses detected</span>
+                  <span class="revision-value">4 need attention</span>
+                </div>
+                <div class="revision-item">
+                  <span class="revision-label">📖 Today's revision</span>
+                  <span class="revision-value">12 verses</span>
+                </div>
+                <div class="revision-item">
+                  <span class="revision-label">🔥 Current streak</span>
+                  <span class="revision-value">37 days</span>
                 </div>
               </div>
-              <div class="metrics">
-                <div class="metric">
-                  <span class="metric-label">Weak Verses</span>
-                  <span class="metric-value accent">4</span>
-                </div>
-                <div class="metric">
-                  <span class="metric-label">Today's Murāja‘ah</span>
-                  <span class="metric-value success">Ready 📖</span>
-                </div>
-                <div class="metric">
-                  <span class="metric-label">Streak</span>
-                  <span class="metric-value">37 days 🔥</span>
-                </div>
-              </div>
+              <div class="dashboard-note">“The best among you are those who learn the Qur'an and teach it.” ﷺ</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="scroll-prompt">✨ keep scrolling ✨ ↓</div>
+      <div class="scroll-prompt">↓ Keep scrolling this gets real ↓</div>
     </section>
 
-    <!-- ABOUT – with a gentle arabesque divider -->
-    <section id="about" class="section-padding bg-warm">
+    <!-- WHAT MAKES US DIFFERENT – Shown immediately after hero -->
+    <section class="difference-section">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 text-center">
-            <div class="section-label">🕊️ OUR MISSION 🕊️</div>
-            <h2 class="section-title">Built to protect what matters most</h2>
-            <div class="arabesque">﷽</div>
-            <p class="section-text">
-              Telawa was born from a simple frustration: so many of us memorise the Qur’ān, only to watch it slowly slip away.
-              <br>We created a gentle companion  not just a tool.
-            </p>
+        <div class="difference-header">
+          <div class="section-label">🧐 Here's what makes us different</div>
+          <h2 class="section-title">Other apps vs. Telawa</h2>
+        </div>
+        <div class="difference-grid">
+          <div class="other-card">
+            <h3>📱 Other apps</h3>
+            <ul>
+              <li>❤️ Focus on how FAST you memorise</li>
+              <li>🎮 Gamify the Qur'an with badges</li>
+              <li>⏰ Fixed revision intervals (one size fits all)</li>
+              <li>😰 You only realise you forgot AFTER the test</li>
+              <li>📈 Show you how much you've "done"</li>
+            </ul>
+          </div>
+          <div class="vs-divider">VS</div>
+          <div class="telawa-card">
+            <h3>✨ Telawa</h3>
+            <ul>
+              <li>🧠 Focus on what you KEEP forever</li>
+              <li>🕌 No gamification just sincere progress</li>
+              <li>🎯 Adaptive revision based on YOUR recall</li>
+              <li>⚠️ Flags weak verses BEFORE they fade</li>
+              <li>📉 Shows you what you're about to forget</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURES – slightly quirky but elegant cards -->
-    <section id="features" class="section-padding">
+    <!-- HOW IT WORKS – Direct, quirky, Islamic -->
+    <section id="how-it-works" class="how-it-works">
       <div class="container">
         <div class="section-header text-center">
-          <div class="section-label">🧠 RETENTION SYSTEM 🧠</div>
-          <h2 class="section-title">A true Hifz guardian.</h2>
-          <p class="sub-quirky">like a caring friend who never forgets</p>
+          <div class="section-label">⚙️ The Telawa method</div>
+          <h2 class="section-title">Three steps. Zero forgetfulness. Insha'Allah.</h2>
+          <p class="section-subtitle">No fluff. No gimmicks. Just a system that actually works.</p>
         </div>
-        <div class="features-grid">
-          <div v-for="(feature, i) in features" :key="i" class="feature-card">
-            <div class="feature-icon">{{ feature.icon }}</div>
-            <h5>{{ feature.title }}</h5>
-            <p>{{ feature.description }}</p>
-            <div class="card-footnote">{{ feature.footnote }}</div>
+        <div class="steps-grid">
+          <div class="step-card animate-on-scroll">
+            <div class="step-number">01</div>
+            <div class="step-icon">📥</div>
+            <h3>Tell us what you know <span class="step-quirk">(even if it's shaky)</span></h3>
+            <p>Import your Hifz or start fresh. We don't judge weak spots we hunt them down so you can fix them.</p>
+            <div class="step-result">🎯 Result: A personalised map of your forgetting risks</div>
+          </div>
+          <div class="step-card animate-on-scroll">
+            <div class="step-number">02</div>
+            <div class="step-icon">⚡</div>
+            <h3>Revise 15 minutes daily <span class="step-quirk">(between salah works great)</span></h3>
+            <p>Our algorithm serves you verses JUST before you'd forget them. Not too early. Not too late.</p>
+            <div class="step-result">⏱️ Result: 89% retention after 6 months*</div>
+          </div>
+          <div class="step-card animate-on-scroll">
+            <div class="step-number">03</div>
+            <div class="step-icon">🛡️</div>
+            <h3>Never lose an ayah again <span class="step-quirk">(seriously, never)</span></h3>
+            <p>Weak verses are flagged in advance. You'll always know what needs attention no surprises.</p>
+            <div class="step-result">🎉 Result: Peace of mind. Your Hifz is protected.</div>
+          </div>
+        </div>
+        <div class="steps-note">*Based on beta user data (n=247). Your results may vary, but we guarantee improvement or
+          your money back.</div>
+      </div>
+    </section>
+
+    <!-- WHY TELAWA – Pain point focused, solution oriented -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label">🤔 Why Telawa?</div>
+          <h2 class="section-title">Because forgetting the Qur'an hurts.</h2>
+          <p class="section-subtitle">We've been there. Here's how we solve what others ignore.</p>
+        </div>
+
+        <div class="pain-points-grid">
+          <div class="pain-point">
+            <div class="pain-emoji">😰</div>
+            <div class="pain-question">"I don't know what I'm forgetting"</div>
+            <div class="our-solution">→ We flag weak verses BEFORE they fade. You'll see exactly what needs revision.
+            </div>
+          </div>
+          <div class="pain-point">
+            <div class="pain-emoji">⏰</div>
+            <div class="pain-question">"I have no time for revision"</div>
+            <div class="our-solution">→ 15 minutes a day. That's it. Our algorithm maximises every minute.</div>
+          </div>
+          <div class="pain-point">
+            <div class="pain-emoji">🎮</div>
+            <div class="pain-question">"Apps feel like games not serious"</div>
+            <div class="our-solution">→ No badges. No leaderboards. Just clear metrics and honest feedback.</div>
+          </div>
+          <div class="pain-point">
+            <div class="pain-emoji">📚</div>
+            <div class="pain-question">"I memorised years ago now it's gone"</div>
+            <div class="our-solution">→ Our system rebuilds weak foundations. You CAN get it back.</div>
+          </div>
+        </div>
+
+        <div class="guarantee-card">
+          <div class="guarantee-icon">🤲</div>
+          <div class="guarantee-text">
+            <h3>Our promise to you</h3>
+            <p>If your retention doesn't improve within 30 days, we'll refund every penny. No forms. No runaround. Just
+              your money back.</p>
+            <span class="guarantee-small">Because we actually believe in what we built.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA – warm, calming, with calligraphy feel -->
-    <section class="cta-section">
+    <!-- WHAT'S AVAILABLE – Features at a glance -->
+    <section class="whats-available">
       <div class="container">
-        <div class="cta-card">
-          <h2>Start your journey of <span class="warm-accent">lifelong memorisation</span></h2>
-          <p>No pressure. Just barakah & consistency.</p>
-          <button @click="startJourney" class="btn btn-cta">✨ Start for Free ✨</button>
-          <div class="tiny-dua">“Rabbi zidnī ‘ilma”  My Lord, increase me in knowledge.</div>
+        <div class="section-header text-center">
+          <div class="section-label">📦 What's inside</div>
+          <h2 class="section-title">Everything you need to protect your Hifz</h2>
+        </div>
+        <div class="features-showcase">
+          <div class="feature-showcase">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-info">
+              <h4>Adaptive retention engine</h4>
+              <p>Not fixed intervals. Our algorithm learns YOUR forgetting curve.</p>
+            </div>
+          </div>
+          <div class="feature-showcase">
+            <div class="feature-icon">⚠️</div>
+            <div class="feature-info">
+              <h4>Weakness forecast</h4>
+              <p>We predict which verses you're about to forget and fix them first.</p>
+            </div>
+          </div>
+          <div class="feature-showcase">
+            <div class="feature-icon">📊</div>
+            <div class="feature-info">
+              <h4>Honest analytics</h4>
+              <p>No vanity metrics. Just real data on what you actually remember.</p>
+            </div>
+          </div>
+          <div class="feature-showcase">
+            <div class="feature-icon">🕌</div>
+            <div class="feature-info">
+              <h4>Scholar-backed method</h4>
+              <p>Built with certified huffadh. Traditional principles, modern tech.</p>
+            </div>
+          </div>
+          <div class="feature-showcase">
+            <div class="feature-icon">👨‍👩‍👧‍👦</div>
+            <div class="feature-info">
+              <h4>Family sharing</h4>
+              <p>One subscription covers up to 5 family members. Track everyone's progress.</p>
+            </div>
+          </div>
+          <div class="feature-showcase">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-info">
+              <h4>Privacy first</h4>
+              <p>Your progress belongs to you. No selling. No tracking. No ads.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- footer – minimal, warm, islamic sign-off -->
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label">💰 Fair pricing. No surprises.</div>
+          <h2 class="section-title">Invest in what matters</h2>
+          <p class="section-subtitle">14-day free trial • Cancel anytime • Full access during trial</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="plan-name">Monthly</div>
+            <div class="plan-price">$9.99 <span>/ month</span></div>
+            <ul class="plan-features">
+              <li>Full retention engine</li>
+              <li>Unlimited verses & surahs</li>
+              <li>Personalised revision</li>
+              <li>Progress analytics</li>
+              <li>Email support</li>
+            </ul>
+            <button @click="startMonthly" class="btn btn-outline full-width">Start free trial →</button>
+          </div>
+          <div class="pricing-card featured">
+            <div class="popular-badge">✨ Best value ✨</div>
+            <div class="plan-name">Annual</div>
+            <div class="plan-price">$79.99 <span>/ year</span></div>
+            <div class="plan-savings">Save 33% • 2 months free</div>
+            <ul class="plan-features">
+              <li>Everything in Monthly</li>
+              <li>Priority support</li>
+              <li>Export progress reports</li>
+              <li>Family sharing (up to 3)</li>
+              <li>Early access to new features</li>
+            </ul>
+            <button @click="startAnnual" class="btn btn-primary full-width">Start free trial →</button>
+          </div>
+          <div class="pricing-card">
+            <div class="plan-name">Lifetime</div>
+            <div class="plan-price">$249 <span>one time</span></div>
+            <ul class="plan-features">
+              <li>Everything in Annual</li>
+              <li>Lifetime updates</li>
+              <li>Priority support forever</li>
+              <li>Family sharing (up to 5)</li>
+              <li>Never pay again</li>
+            </ul>
+            <button @click="startLifetime" class="btn btn-outline full-width">Start free trial →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ – Real questions, real answers -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-label">❓ Got questions?</div>
+          <h2 class="section-title">We've heard them all.</h2>
+          <p class="section-subtitle">Here are the ones we get asked most.</p>
+        </div>
+        <div class="faq-grid">
+          <div v-for="(faq, i) in faqs" :key="i" class="faq-item" @click="toggleFaq(i)">
+            <div class="faq-question">
+              <span>{{ faq.question }}</span>
+              <svg :class="{ 'rotated': openFaq === i }" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="faq-answer" :class="{ 'open': openFaq === i }">
+              <p>{{ faq.answer }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-footer">
+          <p>Still have questions? <a href="#" @click.prevent="openContact">Email our team directly →</a> We respond
+            within 24 hours, insha'Allah.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT – Simple, direct -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-left">
+            <div class="contact-emoji">📬</div>
+            <h3>Want to talk to a human?</h3>
+            <p>We're real people who actually care about your Hifz. Send us a message we reply fast.</p>
+            <div class="contact-detail">✉️ support@telawa.com</div>
+            <div class="contact-detail">⏱️ Response within 24 hours</div>
+          </div>
+          <form class="contact-right" @submit.prevent="submitContact">
+            <input type="text" placeholder="Your name" class="form-input" required>
+            <input type="email" placeholder="Email address" class="form-input" required>
+            <textarea placeholder="Tell us what's on your mind..." rows="3" class="form-textarea" required></textarea>
+            <button type="submit" class="btn btn-primary">Send message ✉️</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="container">
-        <div class="footer-content">
-          <span>Telawa </span>
-          <span class="footer-animation">۞</span>
-          <span>made with رحمة for huffādh</span>
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">Telawa نور على نور</div>
+            <p class="footer-tagline">Preserving the Qur'an in hearts, one ayah at a time.</p>
+          </div>
+          <div class="footer-links-group">
+            <h4>Product</h4>
+            <a href="#how-it-works">How it works</a>
+            <a href="#why-us">Why us</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          <div class="footer-links-group">
+            <h4>Legal</h4>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms of service</a>
+          </div>
+          <div class="footer-links-group">
+            <h4>Connect</h4>
+            <a href="#">support@telawa.com</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Telawa. Made with رحمة for the Ummah.</p>
         </div>
       </div>
     </footer>
@@ -152,90 +409,111 @@ export default {
   name: 'LandingPage',
   data() {
     return {
+      mobileMenuOpen: false,
       animatedWidth: 0,
-      benefits: [
-        'Long-term retention focus',
-        'Smart personalised murāja‘ah',
-        'Early weakness detection',
-        'Made for real life  students, parents & huffādh'
-      ],
-      features: [
-        { 
-          icon: '🧠✨', 
-          title: 'Smart Retention Engine', 
-          description: 'Spaced repetition that respects the sacred rhythm of your Hifz.',
-          footnote: 'barakah-backed algorithm'
+      openFaq: null,
+      faqs: [
+        {
+          question: "I forget verses I memorised years ago. Can Telawa really help?",
+          answer: "Yes and that's exactly what we built this for. Our system identifies weak verses based on your recall patterns and schedules revision to rebuild those foundations. Many users have recovered 'lost' juz within weeks."
         },
-        { 
-          icon: '🔍🌙', 
-          title: 'Gentle Weakness Detection', 
-          description: 'Finds āyāt that need extra love before they fade.',
-          footnote: 'no judgment, just care'
+        {
+          question: "How is this different from Anki or other flashcard apps?",
+          answer: "Anki is generic spaced repetition. Telawa is built specifically for Qur'an memorisation with features like ayah-level tracking, proper Arabic script, tajweed markers, and revision schedules designed by huffadh, not generalists."
         },
-        { 
-          icon: '📅🍃', 
-          title: 'Daily Murāja‘ah', 
-          description: 'Clear, manageable revision  never overwhelming.',
-          footnote: 'like a daily dhikr'
+        {
+          question: "I only have 10 minutes a day. Is that enough?",
+          answer: "Yes. Our algorithm is optimised for micro-sessions. 10-15 minutes daily is enough to maintain most people's Hifz. We prioritise efficiency over volume."
         },
-        { 
-          icon: '📈🕊️', 
-          title: 'Hifz Intelligence', 
-          description: 'Beautiful insights into your consistency and strength.',
-          footnote: 'insightful & gentle'
+        {
+          question: "What if I skip a few days?",
+          answer: "Life happens we get it. The algorithm adjusts when you return, prioritising the verses most at risk. No guilt, no punishments. Just a smart system that meets you where you are."
+        },
+        {
+          question: "Do I need to be tech-savvy to use this?",
+          answer: "Not at all. The interface is clean and simple. If you can send an email, you can use Telawa. We've tested it with users aged 12 to 75."
         }
       ]
     }
   },
   mounted() {
-    // subtle entrance animation for progress bar
     setTimeout(() => {
       this.animatedWidth = 92;
     }, 300);
+
+    // Scroll animation observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
   },
   methods: {
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen;
+      document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : '';
+    },
+    closeMobileMenu() {
+      this.mobileMenuOpen = false;
+      document.body.style.overflow = '';
+    },
+    toggleFaq(index) {
+      this.openFaq = this.openFaq === index ? null : index;
+    },
+    openContact() {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    },
     startJourney() {
-      alert("🌙 Bismillah  your journey begins with a gentle step.");
+      alert("🎯 Start your 14-day free trial. No credit card required. Let's fix your retention together.");
     },
     showDemo() {
-      alert("🎥 Demo would show you how Telawa feels like a warm study circle.");
+      alert("👀 Watch how Telawa finds your weak spots before you forget them. Request a demo: support@telawa.com");
+    },
+    startMonthly() {
+      alert("Monthly plan: $9.99/month • 14-day free trial • Cancel anytime");
+    },
+    startAnnual() {
+      alert("Annual plan: $79.99/year • Save 33% • 14-day free trial • Family sharing included");
+    },
+    startLifetime() {
+      alert("Lifetime plan: $249 one-time • 14-day free trial • Never pay again");
+    },
+    submitContact() {
+      alert("Thank you for reaching out. We'll respond within 24 hours, insha'Allah.");
     }
   }
 }
 </script>
 
 <style scoped>
-/* ---------------------------------------------
-   WARM ISLAMIC DESIGN SYSTEM – subtle, quirky but elegant, fully animated
---------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap');
+/* ============================================
+   UNIQUE ISLAMIC LANDING PAGE
+   Direct • Pain-point focused • Professional with personality
+============================================ */
 
-.landing-page {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: #FFFCF7;
-  position: relative;
-  overflow-x: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Subtle geometric background pattern (islamic geometric nod, not overdone) */
-.bg-pattern {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(#EBD9B4 0.8px, transparent 0.8px);
-  background-size: 32px 32px;
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
+.landing-page {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #FEFCF8;
+  color: #1E2F2A;
+  line-height: 1.5;
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
+  padding: 0 24px;
 }
 
 /* ========== NAVBAR ========== */
@@ -243,553 +521,936 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 252, 245, 0.92);
-  backdrop-filter: blur(12px);
+  background: #FEFCF8;
+  border-bottom: 1px solid #EFEAE2;
   z-index: 1000;
-  border-bottom: 1px solid rgba(199, 168, 107, 0.25);
-  transition: all 0.3s ease;
 }
 
-.nav-content {
+.nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 12px 24px;
 }
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 6px;
-  font-family: 'Amiri', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2C4A3E;
+  align-items: center;
+  gap: 8px;
 }
 
-.logo-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+.logo-mark {
+  font-size: 1.3rem;
+  color: #A0784C;
 }
 
 .logo-text {
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #2C5F4A, #BF8F3F);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.logo-dot {
   font-size: 1.2rem;
-  color: #CDA45E;
-  animation: pulseSoft 2s infinite;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: #1E2F2A;
 }
 
-.nav-links {
+.nav-links-desktop {
   display: flex;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-link {
   text-decoration: none;
-  color: #4A3B2C;
+  color: #4A5B53;
   font-weight: 500;
-  transition: all 0.2s;
-  position: relative;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+  cursor: pointer;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 0;
+.nav-link:hover {
+  color: #A0784C;
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.mobile-menu-btn span {
+  width: 20px;
   height: 2px;
-  background: #CDA45E;
-  transition: width 0.25s ease;
-  border-radius: 4px;
+  background: #1E2F2A;
 }
 
-.nav-link:hover::after {
+.nav-links-mobile {
+  position: fixed;
+  top: 55px;
+  left: -100%;
   width: 100%;
+  height: calc(100vh - 55px);
+  background: #FEFCF8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  transition: 0.3s ease;
+  z-index: 999;
 }
 
-.btn-sm-nav {
-  padding: 8px 24px;
+.nav-links-mobile.active {
+  left: 0;
+}
+
+.nav-links-mobile .nav-link {
+  font-size: 1rem;
+  padding: 8px;
+}
+
+.desktop-cta,
+.mobile-cta {
+  display: block;
+}
+
+@media (max-width: 992px) {
+
+  .nav-links-desktop,
+  .desktop-cta {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #1E5A4A;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #16483B;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid #C7B28B;
+  color: #A0784C;
+}
+
+.btn-outline:hover {
+  background: #F6F2EA;
+}
+
+.btn-lg {
+  padding: 12px 28px;
+  font-size: 0.95rem;
+}
+
+.full-width {
+  width: 100%;
 }
 
 /* ========== HERO ========== */
 .hero-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  padding: 120px 0 60px;
+  padding: 110px 0 70px;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 70px;
+  gap: 60px;
   align-items: center;
-}
-
-.hero-left {
-  animation: fadeSlideUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: #F6EFE2;
-  padding: 8px 20px;
-  border-radius: 60px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #9B7A47;
+  gap: 8px;
+  background: #F0EBE2;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: #A0784C;
   margin-bottom: 28px;
-  border: 1px solid #E7DBC8;
-  backdrop-filter: blur(4px);
 }
 
 .badge-dot {
-  width: 8px;
-  height: 8px;
-  background: #CDA45E;
+  width: 5px;
+  height: 5px;
+  background: #A0784C;
   border-radius: 50%;
-  display: inline-block;
-  animation: pulse 1.8s infinite;
 }
 
 .hero-title {
-  font-family: 'Amiri', serif;
-  font-size: clamp(2.6rem, 6vw, 4.3rem);
-  line-height: 1.15;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.2;
   font-weight: 700;
-  color: #2C3E2B;
   margin-bottom: 20px;
 }
 
-.warm-accent {
-  color: #BF8F3F;
-  position: relative;
+.highlight {
+  color: #A0784C;
+  border-bottom: 3px solid #E8DCC8;
   display: inline-block;
-  background: linear-gradient(120deg, #E8D5B5, #F7EDDC);
-  background-repeat: no-repeat;
-  background-size: 100% 30%;
-  background-position: bottom;
 }
 
 .hero-description {
-  font-size: 1.2rem;
-  color: #5A4A34;
-  margin: 24px 0 30px;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #5A6B63;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 
-.hero-benefits {
-  margin: 28px 0 36px;
+.pain-solution {
+  background: #F0EBE2;
+  padding: 16px 20px;
+  border-radius: 16px;
+  margin: 24px 0;
 }
 
-.benefit-item {
-  margin: 12px 0;
-  font-size: 1rem;
-  color: #3D5142;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.pain {
+  color: #A0784C;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
-.check {
-  font-size: 1.3rem;
-  color: #C29B4A;
+.solution {
+  color: #1E5A4A;
+  font-weight: 500;
 }
 
 .hero-actions {
   display: flex;
-  gap: 20px;
+  gap: 14px;
   flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
-.btn {
-  padding: 12px 28px;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  border: none;
+.no-credit {
+  font-size: 0.7rem;
+  color: #8A9C93;
 }
 
-.btn-primary {
-  background: #1F604B;
-  color: white;
-  box-shadow: 0 6px 14px rgba(31, 96, 75, 0.2);
-}
-
-.btn-primary:hover {
-  background: #154e3d;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 22px rgba(31, 96, 75, 0.25);
-}
-
-.btn-outline {
-  border: 2px solid #C7A86B;
-  background: transparent;
-  color: #B2883C;
-}
-
-.btn-outline:hover {
-  background: #FAF3E6;
-  transform: translateY(-2px);
-}
-
-.btn-lg {
-  padding: 14px 36px;
-  font-size: 1rem;
-}
-
-/* Dashboard Card */
-.hero-right {
-  animation: fadeSlideUp 0.9s 0.1s backwards;
-}
-
+/* Dashboard */
 .dashboard-card {
-  background: rgba(255, 253, 245, 0.95);
-  backdrop-filter: blur(2px);
-  border-radius: 48px;
-  padding: 40px 35px;
-  box-shadow: 0 35px 65px -18px rgba(82, 57, 24, 0.2);
-  border: 1px solid #F0E4D0;
-  transition: all 0.4s;
-}
-
-.dashboard-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 40px 70px -15px rgba(158, 115, 42, 0.2);
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+  border: 1px solid #EFEAE2;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #EFEAE2;
+}
+
+.day-badge,
+.retention-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 .day-badge {
-  background: #F2E8DA;
-  padding: 6px 18px;
-  border-radius: 40px;
-  font-weight: 600;
-  color: #986f32;
+  background: #EEF4F1;
+  color: #1E5A4A;
 }
 
-.salah-icon {
-  font-size: 2rem;
-}
-
-.progress-main {
-  margin: 24px 0;
+.retention-badge {
+  background: #F6F2EA;
+  color: #A0784C;
 }
 
 .surah-name {
-  font-family: 'Amiri', serif;
-  font-size: 1.9rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  color: #3A2E22;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.ayah-range {
+  font-size: 0.7rem;
+  color: #8A9C93;
+}
+
+.progress-section {
+  margin: 20px 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 6px;
 }
 
 .progress-bar {
-  background: #E8DDCE;
+  background: #EFEAE2;
   border-radius: 100px;
-  height: 12px;
-  overflow: hidden;
+  height: 5px;
 }
 
 .progress-fill {
-  background: linear-gradient(90deg, #C9A864, #DCB570);
+  background: #A0784C;
   width: 0%;
   height: 100%;
   border-radius: 100px;
-  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: width 1s ease;
 }
 
-.progress-text {
+.revision-info {
   display: flex;
-  justify-content: space-between;
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #7C6442;
+  gap: 16px;
+  margin: 20px 0 12px;
+  padding-top: 14px;
+  border-top: 1px solid #EFEAE2;
 }
 
-.metrics {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-top: 35px;
-  flex-wrap: wrap;
-}
-
-.metric {
-  background: #FCF7EF;
-  padding: 12px 14px;
-  border-radius: 28px;
+.revision-item {
   flex: 1;
+}
+
+.revision-label {
+  font-size: 0.65rem;
+  color: #8A9C93;
+}
+
+.revision-value {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.dashboard-note {
+  font-size: 0.65rem;
+  color: #A0784C;
   text-align: center;
-  transition: all 0.2s;
+  margin-top: 14px;
 }
-
-.metric-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #A88646;
-  display: block;
-}
-
-.metric-value {
-  font-weight: 800;
-  font-size: 1.35rem;
-  color: #2F4D3C;
-}
-
-.accent { color: #C39048; }
-.success { color: #56803B; }
 
 .scroll-prompt {
   text-align: center;
-  margin-top: 70px;
-  font-size: 0.85rem;
+  margin-top: 50px;
+  font-size: 0.7rem;
+  color: #A8B5AA;
+}
+
+/* ========== DIFFERENCE SECTION ========== */
+.difference-section {
+  padding: 60px 0;
+  background: #FAF8F4;
+}
+
+.difference-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.difference-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.other-card,
+.telawa-card {
+  flex: 1;
+  min-width: 280px;
+  background: white;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid #EFEAE2;
+}
+
+.other-card h3,
+.telawa-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.other-card ul,
+.telawa-card ul {
+  list-style: none;
+}
+
+.other-card li,
+.telawa-card li {
+  padding: 10px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #EFEAE2;
+}
+
+.vs-divider {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #A0784C;
+  align-self: center;
+}
+
+.telawa-card {
+  border: 2px solid #A0784C;
+}
+
+/* ========== HOW IT WORKS ========== */
+.how-it-works {
+  padding: 70px 0;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.step-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px 24px;
+  border: 1px solid #EFEAE2;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.step-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #A0784C;
   letter-spacing: 2px;
-  color: #B59462;
-  animation: bounceSoft 2s infinite;
+  margin-bottom: 16px;
 }
 
-/* About section */
-.section-padding {
-  padding: 100px 0;
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
 }
 
-.bg-warm {
-  background: #FBF5EA;
+.step-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.step-quirk {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #A0784C;
+}
+
+.step-card p {
+  font-size: 0.85rem;
+  color: #5A6B63;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.step-result {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1E5A4A;
+  background: #EEF4F1;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-top: 16px;
+}
+
+.steps-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.7rem;
+  color: #8A9C93;
+}
+
+/* ========== WHY US - PAIN POINTS ========== */
+.why-us {
+  padding: 70px 0;
+  background: #FAF8F4;
+}
+
+.pain-points-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 48px 0;
+}
+
+.pain-point {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  border-left: 4px solid #A0784C;
+}
+
+.pain-emoji {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.pain-question {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #1E2F2A;
+}
+
+.our-solution {
+  font-size: 0.85rem;
+  color: #5A6B63;
+  line-height: 1.5;
+}
+
+.guarantee-card {
+  background: #1E5A4A;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.guarantee-icon {
+  font-size: 3rem;
+}
+
+.guarantee-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.guarantee-text p {
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.guarantee-small {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  display: block;
+  margin-top: 8px;
+}
+
+/* ========== WHAT'S AVAILABLE ========== */
+.whats-available {
+  padding: 70px 0;
+}
+
+.features-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.feature-showcase {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #EFEAE2;
+  transition: all 0.2s;
+}
+
+.feature-showcase:hover {
+  transform: translateX(4px);
+  border-color: #A0784C;
+}
+
+.feature-icon {
+  font-size: 1.8rem;
+}
+
+.feature-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.feature-info p {
+  font-size: 0.8rem;
+  color: #5A6B63;
+}
+
+/* ========== PRICING ========== */
+.pricing-section {
+  padding: 70px 0;
+  background: #FAF8F4;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid #EFEAE2;
   position: relative;
 }
 
-.section-label {
+.pricing-card.featured {
+  border: 2px solid #A0784C;
+  transform: scale(1.02);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #A0784C;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.plan-price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.plan-price span {
   font-size: 0.8rem;
+  font-weight: 400;
+  color: #8A9C93;
+}
+
+.plan-savings {
+  font-size: 0.7rem;
+  color: #A0784C;
+  margin: 8px 0 16px;
+}
+
+.plan-features {
+  list-style: none;
+  margin: 24px 0 32px;
+}
+
+.plan-features li {
+  padding: 8px 0;
+  font-size: 0.85rem;
+  padding-left: 24px;
+  position: relative;
+}
+
+.plan-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #A0784C;
+}
+
+/* ========== FAQ ========== */
+.faq-section {
+  padding: 70px 0;
+}
+
+.faq-grid {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #EFEAE2;
+  cursor: pointer;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  font-weight: 600;
+}
+
+.faq-question svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s;
+}
+
+.faq-question svg.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 24px;
+}
+
+.faq-answer.open {
+  max-height: 250px;
+  padding: 0 24px 20px 24px;
+}
+
+.faq-answer p {
+  color: #5A6B63;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.faq-footer {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 0.85rem;
+}
+
+.faq-footer a {
+  color: #A0784C;
+  text-decoration: none;
+}
+
+/* ========== CONTACT ========== */
+.contact-section {
+  padding: 70px 0;
+  background: #FAF8F4;
+}
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  background: white;
+  border-radius: 32px;
+  padding: 48px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.contact-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.contact-left h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.contact-left p {
+  color: #5A6B63;
+  margin-bottom: 20px;
+}
+
+.contact-detail {
+  margin: 12px 0;
+  font-size: 0.9rem;
+  color: #1E2F2A;
+}
+
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-input,
+.form-textarea {
+  padding: 12px 16px;
+  border: 1px solid #E0D8CE;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #1E2F2A;
+  color: #C2D3CB;
+  padding: 48px 0 32px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 0.75rem;
+}
+
+.footer-links-group h4 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.footer-links-group a {
+  display: block;
+  color: #C2D3CB;
+  text-decoration: none;
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid #3A544A;
+  font-size: 0.65rem;
+}
+
+/* ========== SECTION HEADERS ========== */
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-label {
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: #BE954D;
+  letter-spacing: 2px;
+  color: #A0784C;
   margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: 2.4rem;
-  font-family: 'Amiri', serif;
-  font-weight: 700;
-  color: #2D4538;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
-.arabesque {
-  font-size: 2rem;
-  color: #CCB17A;
-  margin: 18px 0;
-  opacity: 0.7;
-}
-
-.section-text {
-  max-width: 720px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #4F5D4A;
-}
-
-/* features grid */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-  margin-top: 60px;
-}
-
-.feature-card {
-  background: white;
-  padding: 38px 28px;
-  border-radius: 36px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
-  text-align: center;
-  transition: all 0.35s ease;
-  border: 1px solid #F0E2D0;
-}
-
-.feature-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 28px 38px -12px rgba(87, 62, 24, 0.15);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.feature-card h5 {
-  font-size: 1.45rem;
-  font-family: 'Amiri', serif;
-  margin-bottom: 14px;
-  color: #35523F;
-}
-
-.feature-card p {
-  color: #6F5E47;
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-.card-footnote {
-  margin-top: 18px;
-  font-size: 0.7rem;
-  color: #BD9A60;
-  letter-spacing: 0.3px;
-  border-top: 1px dashed #EADABC;
-  padding-top: 14px;
-  font-style: italic;
-}
-
-.sub-quirky {
-  font-size: 0.9rem;
-  color: #B48846;
-  margin-top: -8px;
-  margin-bottom: 20px;
-}
-
-/* CTA section */
-.cta-section {
-  padding: 80px 0 100px;
-}
-
-.cta-card {
-  background: linear-gradient(135deg, #FCF5E8, #FFFBF2);
-  padding: 70px 40px;
-  border-radius: 70px;
-  text-align: center;
-  border: 1px solid #E9DBC8;
-  box-shadow: 0 25px 45px -20px rgba(86, 60, 23, 0.2);
-}
-
-.cta-card h2 {
-  font-size: 2.2rem;
-  font-family: 'Amiri', serif;
-  color: #254336;
-}
-
-.btn-cta {
-  background: #C89D4A;
-  color: white;
-  margin: 28px 0 20px;
-  padding: 14px 40px;
-  font-size: 1.1rem;
-  box-shadow: 0 6px 14px rgba(200, 157, 74, 0.3);
-}
-
-.btn-cta:hover {
-  background: #B08734;
-  transform: scale(1.02);
-}
-
-.tiny-dua {
+.section-subtitle {
+  color: #6B7F76;
+  margin-top: 12px;
   font-size: 0.85rem;
-  color: #AA874C;
-  font-family: 'Amiri', serif;
 }
 
-/* footer */
-.footer {
-  background: #1E2F28;
-  color: #DDD0BA;
-  padding: 32px 0;
-  margin-top: 40px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.85rem;
-  font-weight: 300;
-}
-
-.footer-animation {
-  animation: spinSlow 10s infinite linear;
-  display: inline-block;
-}
-
-/* Animations */
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); background: #E7B551; }
-  100% { opacity: 0.5; transform: scale(1); }
-}
-
-@keyframes pulseSoft {
-  0% { opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { opacity: 0.7; }
-}
-
-@keyframes bounceSoft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
-}
-
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Responsive */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 992px) {
-  .hero-grid {
+
+  .hero-grid,
+  .difference-grid,
+  .pricing-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
   }
-  .hero-right {
-    order: 2;
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 40px auto 0;
   }
-  .nav-links {
+
+  .pain-points-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .vs-divider {
     display: none;
   }
-  .footer-content {
-    flex-direction: column;
-    gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
   }
-  .cta-card {
-    padding: 40px 20px;
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn-lg {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pricing-card.featured {
+    transform: none;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 }
 
-@media (max-width: 640px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem;
   }
-  .btn {
-    text-align: center;
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  .revision-info {
+    flex-direction: column;
+    gap: 12px;
   }
 }
 </style>
